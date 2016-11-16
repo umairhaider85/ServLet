@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ServLet</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Main Activity Categories-->
+    <string name="commission_structures">Commission Structures</string>
+    <string name="gsm">GSM</string>
+    <string name="fs">FS</string>
+    <string name="telenor_products">Telenor Products</string>
+    <string name="djuice">Djuice</string>
+    <string name="talkshawk">Talkshawk</string>
+    <string name="postpaid">Postpaid</string>
+    <string name="devices">Devices</string>
+    <string name="small_screen">Small Screen</string>
+    <string name="large_screen">Large Screen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Main page categories end here-->
+</resources>
