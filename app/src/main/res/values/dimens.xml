@@ -8,8 +8,10 @@
     <dimen name="textview_bottom_margin">5dp</dimen>
     <dimen name="category_margin">10dp</dimen>
     <dimen name="button_height">30dp</dimen>
-    <dimen name="image_height">70dp</dimen>
-    <dimen name="image_width">70dp</dimen>
-    <dimen name="person_name_textview_height">25dp</dimen>
-    <dimen name="person_description_textview_height">45dp</dimen>
+    <dimen name="image_height">100dp</dimen>
+    <dimen name="image_width">100dp</dimen>
+    <dimen name="person_name_textview_height">40dp</dimen>
+    <dimen name="person_description_textview_height">60dp</dimen>
+    <dimen name="postname_textsize">16dp</dimen>
+    <dimen name="postdetail_textsize">12dp</dimen>
 </resources>

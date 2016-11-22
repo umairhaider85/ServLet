@@ -23,7 +23,7 @@ public class PostDisplayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.activity_selected_category, container, false);
+        return inflater.inflate(R.layout.selected_category_listview, container, false);
 
     }
 

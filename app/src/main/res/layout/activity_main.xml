@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:textAlignment="center"
+    android:background="@color/primary_color"
     tools:context="com.example.umair.servlet.MainActivity">
 
 
@@ -15,30 +16,32 @@
         android:layout_marginBottom="@dimen/textview_bottom_margin"
         android:layout_marginTop="@dimen/category_margin"
         android:text="@string/commission_structures"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/main_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/gsm"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:text="@string/gsm"
-        android:onClick="onClick2"
+        android:onClick="onClick"
         android:textAlignment="center"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/sub_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/fs"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:text="@string/fs"
+        android:textColor="@color/icon_text"
         android:onClick="onClick"
         android:textAlignment="center"
         android:textSize="@dimen/sub_category_size" />
@@ -47,43 +50,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/telenor_products"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/main_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/djuice"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:text="@string/djuice"
         android:onClick="onClick"
         android:textAlignment="center"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/sub_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/talkshawk"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:text="@string/talkshawk"
         android:textAlignment="center"
         android:onClick="onClick"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/sub_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/postpaid"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:onClick="onClick"
         android:text="@string/postpaid"
+        android:textColor="@color/icon_text"
         android:textAlignment="center"
         android:textSize="@dimen/sub_category_size" />
 
@@ -91,32 +97,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/devices"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/main_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/small_screen"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:onClick="onClick"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:text="@string/small_screen"
+        android:textColor="@color/icon_text"
         android:textAlignment="center"
         android:textSize="@dimen/sub_category_size" />
 
-    <TextView
+    <Button
         android:id="@+id/large_screen"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="#3bcdd5"
+        android:background="@color/accent_color"
         android:onClick="onClick"
         android:text="@string/large_screen"
         android:textAlignment="center"
+        android:textColor="@color/icon_text"
         android:textSize="@dimen/sub_category_size" />
 
 

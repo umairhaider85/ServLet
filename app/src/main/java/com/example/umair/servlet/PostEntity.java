@@ -20,14 +20,7 @@ public class PostEntity {
     }
 
     public String getmPostDescription() {
-        return mPostName;
+        return mPostDescription;
     }
 
-    public void setmPostName(String postName) {
-        mPostName = postName ;
-    }
-
-    public void setmPostDescription(String postDescription) {
-        mPostDescription = postDescription;
-    }
 }
