@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,17 +36,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     private static final int INDEX_POST_CONTENT = 3;
     MyDB db;
 
-
     public SyncAdapter(Context context, boolean autoInitialize){
         super(context,autoInitialize);
         mContext = context;
+        db = new MyDB(mContext);
     }
 
 //    performing Sync here
 @Override
 public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
     Log.d(LOG_TAG, "Starting sync");
-    Toast.makeText(mContext,"onPerformSync()!", Toast.LENGTH_SHORT).show();
+
 
     // These two need to be declared outside the try/catch
     // so that they can be closed in the finally block.
@@ -182,7 +181,7 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
             JSONArray postArray = postJson.getJSONArray(OWM_LIST);
 
             JSONObject postTitle = postJson.getJSONObject(OWM_CITY);
-            String cityName = postJson.getString(OWM_CITY_NAME);
+
 
 
 

@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
     MyDB db;
     public Account mAccount;
 
-    private final static String DUMMY_ACCOUNT_NAME = "example.com";
+    private final static String DUMMY_ACCOUNT_NAME = "com.example.umair.servlet";
     private final static String DUMMY_ACCOUNT_PASS = "12345!abcde";
-    private final static String AUTHORITY = "example.com";
+    private final static String AUTHORITY = "com.example.umair.servlet";
 
     public static final long SECONDS_PER_MINUTE = 60L;
     public static final long SYNC_INTERVAL_IN_MINUTES = 60L;

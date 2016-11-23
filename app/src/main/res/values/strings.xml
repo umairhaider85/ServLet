@@ -14,6 +14,7 @@
     <string name="devices">Devices</string>
     <string name="small_screen">Small Screen</string>
     <string name="large_screen">Large Screen</string>
+    <string name="authority">com.example.umair.servlet</string>
 
 
     <!--Main page categories end here-->
