@@ -5,10 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.io.Serializable;
+
 /**
  * Created by Umair on 11/18/2016.
  */
-public class MyDB{
+public class MyDB implements Serializable{
 
     private DataBaseHandler dbHelper;
     private static SQLiteDatabase database;
@@ -61,5 +63,14 @@ public class MyDB{
 
     public SQLiteDatabase getDB(){
         return database;
+    }
+
+    public void deleteAll()
+    {
+        database.execSQL("Delete from " + "posts");
+    }
+
+    public void closeDB(){
+        database.close();
     }
 }

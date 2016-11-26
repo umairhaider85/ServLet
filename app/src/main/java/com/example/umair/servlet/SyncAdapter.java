@@ -29,12 +29,14 @@ import java.util.Vector;
 public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     public final String LOG_TAG = SyncAdapter.class.getSimpleName();
+
     Context mContext;
     private PostAdapter mPostAdapter;
     private static final int INDEX_POST_TITLE = 1;
     private static final int INDEX_POST_EXPERT = 2;
     private static final int INDEX_POST_CONTENT = 3;
     MyDB db;
+
 
     public SyncAdapter(Context context, boolean autoInitialize){
         super(context,autoInitialize);
@@ -73,7 +75,7 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
         final String APPID_PARAM = "APPID";
 
         Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
-                .appendQueryParameter(QUERY_PARAM, "44000")
+                .appendQueryParameter(QUERY_PARAM, "islamabad")
                 .appendQueryParameter(FORMAT_PARAM, format)
                 .appendQueryParameter(UNITS_PARAM, units)
                 .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
@@ -109,7 +111,7 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
             return;
         }
         postJsonStr = buffer.toString();
-        getWeatherDataFromJson(postJsonStr, "44000");
+        getWeatherDataFromJson(postJsonStr);
     } catch (IOException e) {
         Log.e(LOG_TAG, "Error ", e);
         // If the code didn't successfully get the weather data, there's no point in attempting
@@ -129,6 +131,7 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
             }
         }
     }
+
     return;
 }
 
@@ -140,8 +143,7 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
      * into an Object hierarchy for us.
      */
 
-    private void getWeatherDataFromJson(String forecastJsonStr,
-                                        String locationSetting)
+    private void getWeatherDataFromJson(String forecastJsonStr)
             throws JSONException {
 
         // Now we have a String representing the complete forecast in JSON Format.
@@ -176,6 +178,8 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
         final String OWM_DESCRIPTION = "main";
         final String OWM_WEATHER_ID = "id";
 
+        Log.v("JSON data: ", forecastJsonStr.toString());
+
         try {
             JSONObject postJson = new JSONObject(forecastJsonStr);
             JSONArray postArray = postJson.getJSONArray(OWM_LIST);
@@ -207,7 +211,9 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
 
             // now we work exclusively in UTC
             dayTime = new Time();
-
+//            deleting old data before creating new one
+            db.deleteAll();
+//          creating new data
             for(int i = 0; i < postArray.length(); i++) {
                 // These are the values that will be collected.
                 long dateTime;
@@ -247,19 +253,12 @@ public void onPerformSync(Account account, Bundle extras, String authority, Cont
                 low = temperatureObject.getDouble(OWM_MIN);
 
                db.createRecords(i,i,null,""+low,""+high,description);
-
             }
-
-
-
-
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
         }
+
     }
-
-
-
 }

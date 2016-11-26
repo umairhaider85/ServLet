@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private final static String AUTHORITY = "com.example.umair.servlet";
 
     public static final long SECONDS_PER_MINUTE = 60L;
-    public static final long SYNC_INTERVAL_IN_MINUTES = 60L;
+    public static final long SYNC_INTERVAL_IN_MINUTES = 1L;
     public static final long SYNC_INTERVAL = SYNC_INTERVAL_IN_MINUTES * SECONDS_PER_MINUTE;
 
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         resolver.setSyncAutomatically(mAccount,AUTHORITY,true);
         resolver.requestSync(mAccount, AUTHORITY,settingsBundle);
         resolver.addPeriodicSync(mAccount, AUTHORITY,new Bundle(),SYNC_INTERVAL);
+
         startService(new Intent(this, SyncService.class));
     }
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.deleteDatabase(DataBaseHandler.DATABASE_NAME);
+
     }
 
     @Override
@@ -73,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+
+        db.closeDB();
 
         Button button = (Button) this.findViewById(view.getId());
         String category = button.getText().toString();
@@ -115,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
         return newAccount;
     }
+
+
 
 
 }

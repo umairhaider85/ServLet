@@ -15,20 +15,31 @@ import java.util.ArrayList;
 
 public class PostDisplayActivity extends AppCompatActivity {
 
-    private PostAdapter mPostAdapter;
-    private Context context;
-    ArrayList<PostEntity> data;
-    MyDB db;
+    private static PostAdapter mPostAdapter;
+    private static Context mContext;
+    static ArrayList<PostEntity> data;
+    static MyDB db;
+    static ListView postListView ;
+    static Cursor dataCursor;
+
 
     @Override
     protected void onStart() {
         super.onStart();
 //        Updating Activity title
-        this.setTitle(getIntent().getStringExtra("category").toString());
 
+   }
+
+    private void initializeMetaDataInstances(){
+        this.setTitle(getIntent().getStringExtra("category").toString());
+        mContext = PostDisplayActivity.this;
         db = new MyDB(this);
         db.getDB();
-   }
+        postListView = (ListView) findViewById(R.id.listview_post_description);
+        data = new ArrayList<PostEntity>();
+        updatePostsData();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +50,39 @@ public class PostDisplayActivity extends AppCompatActivity {
                     .add(R.id.fragment_post_display, new PostDisplayFragment())
                     .commit();
         }
-        data = new ArrayList<PostEntity>();
+        initializeMetaDataInstances();
+
+    }
+
+    public static void updatePostsData(){
+
 //        Adding dummy data
-         Cursor getDataCursor = db.selectRecords();
+        dataCursor = db.selectRecords();
 
-        if (getDataCursor.moveToFirst()){
-            while(!getDataCursor.isAfterLast()){
-                String title = getDataCursor.getString(getDataCursor.getColumnIndex(MyDB.POST_TITLE));
-                String expert = getDataCursor.getString(getDataCursor.getColumnIndex(MyDB.POST_EXPERT));
-                data.add(new PostEntity(title,expert));
-                // do what ever you want here
-                getDataCursor.moveToNext();
-            }
-        }
-        getDataCursor.close();
+        mPostAdapter = new PostAdapter(mContext,dataCursor);
 
-        mPostAdapter = new PostAdapter(this,R.layout.list_item,data);
-        final ListView postListView = (ListView) findViewById(R.id.listview_post_description);
         postListView.setAdapter(mPostAdapter);
-        context = getApplication().getApplicationContext();
+
         postListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent postDetails = new Intent(context, WebViewActivity.class);
+                Intent postDetails = new Intent(mContext, WebViewActivity.class);
                 String postNameForTitle = ((TextView) view.findViewById(R.id.post_name)).getText().toString();
                 postDetails.putExtra("title",postNameForTitle);
-                startActivity(postDetails);
-                Toast.makeText(context,"I am clicked",Toast.LENGTH_SHORT).show();
+                mContext.startActivity(postDetails);
+                Toast.makeText(mContext,"I am clicked",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public static void refreshPostsData(){
+        mPostAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+
+
+        super.onResume();
     }
 }

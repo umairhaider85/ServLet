@@ -11,10 +11,11 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     private Context mContext;
 
-    private static final String DATABASE_NAME = "POSTSDB";
+    public static final String DATABASE_NAME = "POSTSDB";
     private static final int DATABASE_VERSION = 2;
 
-    private static final String CREATE_POSTS_TABLE = "create table posts( menu_id integer primary key," +
+    private static final String CREATE_POSTS_TABLE = "create table posts( _id integer primary key autoincrement," +
+            "menu_id integer not null," +
             "post_id integer not null," +
             "post_image blob," +
             "post_title text," +
@@ -37,5 +38,9 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {}
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+
+
 }
